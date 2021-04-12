@@ -1,0 +1,25 @@
+{
+	"name": "live-counting-watcher",
+	"description": "Relays information about a Reddit Live counting thread to a Telegram channel.",
+	"version": "1.0.0",
+	"main": "./src/index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/haykam821/Live-Counting-Watcher.git"
+	},
+	"keywords": [
+		"reddit",
+		"live",
+		"telegram",
+		"bot"
+	],
+	"author": "haykam821",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/haykam821/Live-Counting-Watcher/issues"
+	},
+	"homepage": "https://github.com/haykam821/Live-Counting-Watcher#readme"
+}
