@@ -3,6 +3,7 @@ import got, { Response } from "got";
 
 import { LiveCountingWatcherConfig } from "./utils/get-config";
 import { Telegraf } from "telegraf";
+import { doesFilterMatch } from "./utils/filter";
 import { getLiveUpdateMessage } from "./utils/formatting";
 import { log } from "./utils/debug";
 import { getThreadAboutUrl } from "./utils/urls";
@@ -72,6 +73,11 @@ export default class App {
 			const message = getLiveUpdateMessage(update);
 
 			this.sendLiveUpdateMessage(message, this.config.fullChat);
+			for (const filteredChat of this.config.filteredChats) {
+				if (doesFilterMatch(update.body, filteredChat)) {
+					this.sendLiveUpdateMessage(message, filteredChat.chat);
+				}
+			}
 		} else {
 			log("received socket message with type '%s' and payload: %O", data.type, data.payload);
 		}
