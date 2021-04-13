@@ -5,8 +5,8 @@ import { cosmiconfig } from "cosmiconfig";
 import mergeDeep from "merge-deep";
 
 export interface LiveCountingWatcherConfig {
-	fullChat: number;
 	filteredChats: FilteredChat[];
+	fullChat: number;
 	thread: string;
 	token: string;
 }
@@ -16,10 +16,10 @@ interface LiveCountingWatcherConfigResult extends CosmiconfigResult {
 }
 
 const baseConfig: LiveCountingWatcherConfig = {
-	fullChat: null,
 	filteredChats: [],
-	token: null,
+	fullChat: null,
 	thread: null,
+	token: null,
 };
 
 /**

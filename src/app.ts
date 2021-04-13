@@ -5,11 +5,12 @@ import { LiveCountingWatcherConfig } from "./utils/get-config";
 import { Telegraf } from "telegraf";
 import { doesFilterMatch } from "./utils/filter";
 import { getLiveUpdateMessage } from "./utils/formatting";
-import { log } from "./utils/debug";
 import { getThreadAboutUrl } from "./utils/urls";
+import { log } from "./utils/debug";
 
 interface LiveThreadBody {
 	data: {
+		/* eslint-disable-next-line camelcase */
 		websocket_url: string;
 	};
 	kind: "LiveUpdateEvent";
@@ -21,6 +22,7 @@ interface LiveThreadData {
 }
 
 export interface LiveUpdate {
+	/* eslint-disable camelcase */
 	body: string;
 	name: string;
 	created: number;
@@ -29,6 +31,7 @@ export interface LiveUpdate {
 	body_html: string;
 	stricken: boolean;
 	id: string;
+	/* eslint-enable camelcase */
 }
 
 export default class App {
@@ -53,8 +56,10 @@ export default class App {
 		if (chat && typeof chat === "number") {
 			try {
 				await this.client.telegram.sendMessage(chat, message, {
+					/* eslint-disable camelcase */
 					disable_web_page_preview: true,
 					parse_mode: "MarkdownV2",
+					/* eslint-enable camelcase */
 				});
 				log("sent live update message to chat %s", chat);
 			} catch (error) {
@@ -63,7 +68,7 @@ export default class App {
 		}
 	}
 
-	private async handleSocketMessage(rawData: Data): Promise<void> {
+	private handleSocketMessage(rawData: Data): void {
 		const data: LiveThreadData = JSON.parse(rawData.toString());
 
 		if (data.payload && data.payload.kind === "LiveUpdate") {
@@ -98,7 +103,7 @@ export default class App {
 			} else if (!response.body.data.websocket_url) {
 				throw new Error("Missing thread socket URL");
 			} else if (typeof response.body.data.websocket_url !== "string") {
-				throw new Error("Invalid type for thread socket URL");
+				throw new TypeError("Invalid type for thread socket URL");
 			}
 
 			return response.body.data.websocket_url;

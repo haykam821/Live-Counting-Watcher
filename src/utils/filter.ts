@@ -11,8 +11,12 @@ interface MultiFilter {
 	filters: Filter[];
 }
 
-export type Filter = SimpleFilter | RegExpFilter | MultiFilter
+export type Filter = SimpleFilter | RegExpFilter | MultiFilter;
 
+/**
+ * @param message The message to execute the filter on.
+ * @param filter The filter to test.
+ */
 export function doesFilterMatch(message: string, filter: Filter): boolean {
 	if ("includes" in filter) {
 		return message.includes(filter.includes);
