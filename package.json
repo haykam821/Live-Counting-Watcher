@@ -2,8 +2,11 @@
 	"name": "live-counting-watcher",
 	"description": "Relays information about a Reddit Live counting thread to a Telegram channel.",
 	"version": "1.0.0",
-	"main": "./src/index.js",
+	"main": "./dist/index.js",
 	"scripts": {
+		"build": "tsc",
+		"start": "node ./dist/index.js",
+		"dev": "ts-node-dev --respawn ./src/index.ts",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
@@ -21,5 +24,20 @@
 	"bugs": {
 		"url": "https://github.com/haykam821/Live-Counting-Watcher/issues"
 	},
-	"homepage": "https://github.com/haykam821/Live-Counting-Watcher#readme"
+	"homepage": "https://github.com/haykam821/Live-Counting-Watcher#readme",
+	"devDependencies": {
+		"@types/debug": "^4.1.5",
+		"@types/merge-deep": "^3.0.0",
+		"@types/ws": "^7.4.1",
+		"ts-node-dev": "^1.1.6",
+		"typescript": "^4.2.4"
+	},
+	"dependencies": {
+		"cosmiconfig": "^7.0.0",
+		"debug": "^4.3.1",
+		"got": "^11.8.2",
+		"merge-deep": "^3.0.3",
+		"telegraf": "^4.3.0",
+		"ws": "^7.4.4"
+	}
 }

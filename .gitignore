@@ -74,3 +74,17 @@ typings/
 
 # FuseBox cache
 .fusebox/
+
+# TypeScript output
+dist/
+
+# Configuration
+config.json
+.live-counting-watcherrc
+.live-counting-watcherrc.json
+.live-counting-watcherrc.yaml
+.live-counting-watcherrc.yml
+.live-counting-watcherrc.js
+.live-counting-watcherrc.cjs
+live-counting-watcherrc.config.js
+live-counting-watcherrc.config.cjs
