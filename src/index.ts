@@ -11,4 +11,5 @@ async function start() {
 	const app = new App(config);
 	app.start();
 }
+/* eslint-disable-next-line unicorn/prefer-top-level-await */
 start();
